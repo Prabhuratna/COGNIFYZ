@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navigation Menu</title>
+  <style>
+    body {
+      font-family:sans-serif, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #363636;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #4f4d4d;
+      text-align: center;
+    }
+
+    nav ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+    }
+
+    nav ul li a:hover {
+      background-color: #787882;
+    }
+
+    /* Hamburger menu icon */
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+    }
+
+    /* Media query for smaller screens */
+    @media screen and (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        text-align: center;
+      }
+
+      nav ul li {
+        display: block;
+        margin-bottom: 15px;
+      }
+
+      .menu-icon {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .menu-icon .bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Rotate first and third bar */
+      .menu-icon .bar:first-child {
+        transform-origin: 0 0;
+      }
+
+      .menu-icon.active .bar:first-child {
+        transform: rotate(45deg);
+      }
+
+      .menu-icon.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-icon.active .bar:last-child {
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Responsive Navigation Menu</h1>
+  </header>
+  <nav>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.querySelector('nav ul');
+      var menuIcon = document.querySelector('.menu-icon');
+
+      menu.classList.toggle('active');
+      menuIcon.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
